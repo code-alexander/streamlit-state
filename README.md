@@ -2,7 +2,21 @@
 
 A thin wrapper for session state in Streamlit.
 
-## 📖
+## 🚀 TLDR
+
+Install with [pip](https://packaging.python.org/en/latest/tutorials/installing-packages/):
+
+```bash
+pip install git+https://github.com/code-alexander/streamlit-state.git
+```
+
+or install with [uv](https://github.com/astral-sh/uv):
+
+```bash
+uv add git+https://github.com/code-alexander/streamlit-state
+```
+
+## 📖 Usage
 
 ### Import the `state` function
 
