@@ -21,7 +21,7 @@ uv add git+https://github.com/code-alexander/streamlit-state
 ### Import the `state` function
 
 ```python
-from src.streamlit_state import state
+from streamlit_state import state
 ```
 
 ### Initialise a session state variable
