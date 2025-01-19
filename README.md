@@ -1,6 +1,6 @@
 # streamlit-state
 
-A thin wrapper for session state in Streamlit.
+A thin wrapper for session state in [Streamlit](https://streamlit.io/).
 
 ## 🚀 TLDR
 
@@ -14,6 +14,62 @@ or install with [uv](https://github.com/astral-sh/uv):
 
 ```bash
 uv add git+https://github.com/code-alexander/streamlit-state
+```
+
+## 💡 Motivation
+
+### Initialising variables
+
+Streamlit session state variables have to be [initialised](docs.streamlit.io/develop/api-reference/caching-and-state/st.session_state#initialize-values-in-session-state) as follows:
+
+```python
+if 'key' not in st.session_state:
+    st.session_state['key'] = 'value'
+```
+
+This can get repetitive if you have many variables.
+
+`streamlit-state` introduces an idempotent function that handles the conditional logic internally:
+
+```python
+my_state = state(key='my_state', initial=None)
+```
+
+### Typing
+
+Streamlit session state variables are not typed:
+
+```python
+if 'my_state' not in st.session_state:
+    st.session_state['my_state'] = None
+
+current = st.session_state['my_state']
+# (type) current = Any
+```
+
+Whereas `streamlit-state` keeps track of the type last assigned to the variable:
+
+```python
+my_state = state('my_state', initial=None)  # my_state: State[None]
+current = my_state()  # current: None = None
+
+my_state = my_state(0)  # my_state: State[int]
+current = my_state()  # current: int = 0
+```
+
+You can even pass a function to update the state:
+
+```python
+# The function takes the current state as its argument
+my_state = my_state(lambda x: x + 1)  # my_state: State[int]
+current = my_state()  # current: int = 1
+```
+
+The type is inferred from the return type of the function (or other callable object):
+
+```python
+my_state = my_state(float)  # my_state: State[float]
+current = my_state()  # current: float = 1.0
 ```
 
 ## 📖 Usage
