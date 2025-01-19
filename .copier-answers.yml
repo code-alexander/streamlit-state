@@ -1,0 +1,7 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: 427c8c0
+_src_path: gh:code-alexander/my-python-template
+distribution_name: streamlit-state
+import_name: streamlit_state
+project_description: A thin wrapper for session state in Streamlit.
+project_name: streamlit-state
