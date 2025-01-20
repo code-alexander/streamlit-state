@@ -1,5 +1,5 @@
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
-_commit: 427c8c0
+_commit: 99322ac
 _src_path: gh:code-alexander/my-python-template
 distribution_name: streamlit-state
 import_name: streamlit_state
