@@ -17,7 +17,7 @@ if TYPE_CHECKING:
 
 import streamlit as st
 
-__all__ = ['state']
+__all__ = ['state', 'callback']
 
 
 class State[A](Protocol):
