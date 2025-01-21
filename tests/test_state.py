@@ -1,6 +1,6 @@
 """Tests for getting and setting state variables."""
 
-from src.streamlit_state import state
+from src.streamlit_state import callback, state
 
 
 def test_dict_initial_state() -> None:
@@ -39,4 +39,28 @@ def test_dict_set_state_cast() -> None:
     """Test that the state can be cast to a new type."""
     x = state('x', 0, {})
     x = x(str)
+    assert x() == '0'
+
+
+def test_dict_callback_set_state_value() -> None:
+    """Test that the state can be updated with a value in a callback."""
+    x = state('x', 0, {})
+    r = callback(x, 1)
+    assert r is None
+    assert x() == 1
+
+
+def test_dict_callback_set_state_function() -> None:
+    """Test that the state can be updated with a function in a callback."""
+    x = state('x', 0, {})
+    r = callback(x, lambda x: x + 1)
+    assert r is None
+    assert x() == 1
+
+
+def test_dict_callback_set_state_cast() -> None:
+    """Test that the state can be cast to a new type in a callback."""
+    x = state('x', 0, {})
+    r = callback(x, str)
+    assert r is None
     assert x() == '0'
