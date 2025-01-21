@@ -34,7 +34,7 @@ jobs:
         run: uvx --from 'validate-pyproject[all,store]' validate-pyproject pyproject.toml
 
       - name: Python type check
-        run: uv run mypy src
+        run: uv run pyright src
 
       - name: Run Python tests
         run: uv run pytest tests --cov=src --cov-report=html
