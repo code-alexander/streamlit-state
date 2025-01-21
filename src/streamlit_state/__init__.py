@@ -92,13 +92,13 @@ def state[A](
     return apply
 
 
-def callback[A, B](fn: State[A], updater: B | Callable[[A], B]) -> None:
+def callback[A, B](apply: State[A], updater: B | Callable[[A], B]) -> None:
     """Applies a state change without returning a function.
 
     This is useful for Streamlit callbacks, which expect `Callable[..., None]`.
 
     Args:
-        fn (State[A]): A function that can get or set a session state variable.
+        apply (State[A]): A function that can get or set a session state variable.
         updater (B | Callable[[A], B]): A value or function to update the state with.
     """
-    fn(updater)
+    apply(updater)
